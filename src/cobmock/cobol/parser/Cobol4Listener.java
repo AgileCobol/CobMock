@@ -9,15 +9,25 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface Cobol4Listener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link Cobol4Parser#addressOfClause}.
+	 * Enter a parse tree produced by {@link Cobol4Parser#lengthOfClause}.
 	 * @param ctx the parse tree
 	 */
-	void enterAddressOfClause(@NotNull Cobol4Parser.AddressOfClauseContext ctx);
+	void enterLengthOfClause(@NotNull Cobol4Parser.LengthOfClauseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link Cobol4Parser#addressOfClause}.
+	 * Exit a parse tree produced by {@link Cobol4Parser#lengthOfClause}.
 	 * @param ctx the parse tree
 	 */
-	void exitAddressOfClause(@NotNull Cobol4Parser.AddressOfClauseContext ctx);
+	void exitLengthOfClause(@NotNull Cobol4Parser.LengthOfClauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Cobol4Parser#compilationUnit}.
+	 * @param ctx the parse tree
+	 */
+	void enterCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Cobol4Parser#compilationUnit}.
+	 * @param ctx the parse tree
+	 */
+	void exitCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Cobol4Parser#mockMeta}.
 	 * @param ctx the parse tree
@@ -29,15 +39,15 @@ public interface Cobol4Listener extends ParseTreeListener {
 	 */
 	void exitMockMeta(@NotNull Cobol4Parser.MockMetaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link Cobol4Parser#lengthOfClause}.
+	 * Enter a parse tree produced by {@link Cobol4Parser#addressOfClause}.
 	 * @param ctx the parse tree
 	 */
-	void enterLengthOfClause(@NotNull Cobol4Parser.LengthOfClauseContext ctx);
+	void enterAddressOfClause(@NotNull Cobol4Parser.AddressOfClauseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link Cobol4Parser#lengthOfClause}.
+	 * Exit a parse tree produced by {@link Cobol4Parser#addressOfClause}.
 	 * @param ctx the parse tree
 	 */
-	void exitLengthOfClause(@NotNull Cobol4Parser.LengthOfClauseContext ctx);
+	void exitAddressOfClause(@NotNull Cobol4Parser.AddressOfClauseContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Cobol4Parser#callStatement}.
 	 * @param ctx the parse tree
@@ -59,15 +69,15 @@ public interface Cobol4Listener extends ParseTreeListener {
 	 */
 	void exitDataIdentifier(@NotNull Cobol4Parser.DataIdentifierContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link Cobol4Parser#compilationUnit}.
+	 * Enter a parse tree produced by {@link Cobol4Parser#dataName}.
 	 * @param ctx the parse tree
 	 */
-	void enterCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx);
+	void enterDataName(@NotNull Cobol4Parser.DataNameContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link Cobol4Parser#compilationUnit}.
+	 * Exit a parse tree produced by {@link Cobol4Parser#dataName}.
 	 * @param ctx the parse tree
 	 */
-	void exitCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx);
+	void exitDataName(@NotNull Cobol4Parser.DataNameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Cobol4Parser#cobolToken}.
 	 * @param ctx the parse tree
@@ -88,14 +98,4 @@ public interface Cobol4Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUsingClause(@NotNull Cobol4Parser.UsingClauseContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Cobol4Parser#dataName}.
-	 * @param ctx the parse tree
-	 */
-	void enterDataName(@NotNull Cobol4Parser.DataNameContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Cobol4Parser#dataName}.
-	 * @param ctx the parse tree
-	 */
-	void exitDataName(@NotNull Cobol4Parser.DataNameContext ctx);
 }

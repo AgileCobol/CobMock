@@ -1,10 +1,56 @@
 <project name="CobMock" default="build" basedir=".">
-	<target name="build" depends="grammar"/>
+	<target name="build" depends="bootstrap-build,grammar,compile-sources,run-tests"/>
 	
 	<target name="grammar">
 		<echo>Generate Cobol Parser</echo>
 		<antlr-gen grammar="grammar/antlr/Cobol4.g" />
 	</target>
+	
+	<target name="bootstrap-build">
+		<sequential>
+			<delete dir="build/" />
+			<mkdir dir="build/" />
+		</sequential>
+	</target>
+	
+	<target name="compile-sources" depends="grammar">
+		<sequential>
+			<echo>Compiling sources...</echo>
+			<javac srcdir="src/cobmock/cobol" destdir="build/" debug="on" source="1.7">
+				<classpath>
+					<fileset dir="lib">
+						<include name="*.jar" />
+					</fileset>
+				</classpath>
+			</javac>
+			<echo>Compiling unit tests...</echo>
+			<javac srcdir="src/cobmock/cobol/test/" destdir="build/" debug="on" source="1.7">
+				<classpath>
+					<fileset dir="lib">
+						<include name="*.jar" />
+					</fileset>
+				</classpath>
+			</javac>
+		</sequential>
+	</target>
+	
+	<target name="run-tests">
+		<echo>Running tests</echo>
+			<junit fork="yes" haltonfailure="yes" showoutput="yes">
+				<classpath>
+					<pathelement location="build/" />
+					<fileset dir="lib">
+						<include name="*.jar" />
+					</fileset>
+				</classpath>
+
+				<formatter type="brief" usefile="no" />
+
+				<test name="cobmock.cobol.test.ParseBasicFile" />
+			</junit>
+		</target>
+
+	
 	
 	<macrodef name="antlr-gen">
 		<attribute name="grammar"/>
@@ -16,7 +62,6 @@
 				<arg line="-o src/cobmock/cobol/parser"/>
 				<arg line="-package cobmock.cobol.parser" />
 				<arg value="@{grammar}"/>
-				
 			</java>
 		</sequential>
 	</macrodef>
