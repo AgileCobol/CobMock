@@ -1,0 +1,23 @@
+<project name="CobMock" default="build" basedir=".">
+	<target name="build" depends="grammar"/>
+	
+	<target name="grammar">
+		<echo>Generate Cobol Parser</echo>
+		<antlr-gen grammar="grammar/antlr/Cobol4.g" />
+	</target>
+	
+	<macrodef name="antlr-gen">
+		<attribute name="grammar"/>
+		<sequential>
+			<java classname="org.antlr.v4.Tool" fork="true">
+				<classpath>
+					<pathelement location="lib/antlr-4.4-complete.jar" />
+				</classpath>
+				<arg line="-o src/cobmock/cobol/parser"/>
+				<arg line="-package cobmock.cobol.parser" />
+				<arg value="@{grammar}"/>
+				
+			</java>
+		</sequential>
+	</macrodef>
+</project>

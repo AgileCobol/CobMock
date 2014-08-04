@@ -1,6 +1,6 @@
-
+package cobmock;
 public class Testclass {
-	public void testSysout() {
+	void testSysout() {
 		System.out.println("Hello JUnit!");
 	}
 }
