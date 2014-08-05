@@ -18,7 +18,7 @@ public class Cobol4Lexer extends Lexer {
 		new PredictionContextCache();
 	public static final int
 		T__1=1, T__0=2, MOVE=3, MOCKUP=4, ENDCALL=5, USING=6, CALL=7, ADDRESS=8, 
-		OF=9, IN=10, LENGTH=11, TOKEN=12, COMMENT=13, INT=14, TEXT=15, STRING=16, 
+		OF=9, IN=10, LENGTH=11, TOKEN=12, MOCKBEGIN=13, INT=14, TEXT=15, STRING=16, 
 		NEWLINE=17, WS=18;
 	public static String[] modeNames = {
 		"DEFAULT_MODE"
@@ -31,7 +31,7 @@ public class Cobol4Lexer extends Lexer {
 	};
 	public static final String[] ruleNames = {
 		"T__1", "T__0", "MOVE", "MOCKUP", "ENDCALL", "USING", "CALL", "ADDRESS", 
-		"OF", "IN", "LENGTH", "TOKEN", "COMMENT", "INT", "TEXT", "STRING", "NEWLINE", 
+		"OF", "IN", "LENGTH", "TOKEN", "MOCKBEGIN", "INT", "TEXT", "STRING", "NEWLINE", 
 		"WS", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 		"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
 	};
@@ -97,7 +97,7 @@ public class Cobol4Lexer extends Lexer {
 		"\3\2\2\2=\u00de\3\2\2\2?\u00e0\3\2\2\2A\u00e2\3\2\2\2C\u00e4\3\2\2\2E"+
 		"\u00e6\3\2\2\2G\u00e8\3\2\2\2I\u00ea\3\2\2\2K\u00ec\3\2\2\2M\u00ee\3\2"+
 		"\2\2O\u00f0\3\2\2\2Q\u00f2\3\2\2\2S\u00f4\3\2\2\2U\u00f6\3\2\2\2W\u00f8"+
-		"\3\2\2\2Y\u00fa\3\2\2\2[\\\7+\2\2\\\4\3\2\2\2]^\7*\2\2^\6\3\2\2\2_`\5"+
+		"\3\2\2\2Y\u00fa\3\2\2\2[\\\7*\2\2\\\4\3\2\2\2]^\7+\2\2^\6\3\2\2\2_`\5"+
 		"? \2`a\5C\"\2ab\5Q)\2bc\5/\30\2c\b\3\2\2\2de\7B\2\2ef\5O(\2fg\5E#\2gh"+
 		"\7/\2\2hi\5+\26\2ij\5\'\24\2jk\5=\37\2kl\5=\37\2l\n\3\2\2\2mn\5/\30\2"+
 		"no\5A!\2op\5-\27\2pq\7/\2\2qr\5+\26\2rs\5\'\24\2st\5=\37\2tu\5=\37\2u"+
@@ -111,7 +111,7 @@ public class Cobol4Lexer extends Lexer {
 		"\5M\'\2\u0094\u0095\5\65\33\2\u0095\30\3\2\2\2\u0096\u009b\5\7\4\2\u0097"+
 		"\u009b\5\13\6\2\u0098\u009b\5\17\b\2\u0099\u009b\7\60\2\2\u009a\u0096"+
 		"\3\2\2\2\u009a\u0097\3\2\2\2\u009a\u0098\3\2\2\2\u009a\u0099\3\2\2\2\u009b"+
-		"\32\3\2\2\2\u009c\u009d\7,\2\2\u009d\34\3\2\2\2\u009e\u00a0\t\2\2\2\u009f"+
+		"\32\3\2\2\2\u009c\u009d\7B\2\2\u009d\34\3\2\2\2\u009e\u00a0\t\2\2\2\u009f"+
 		"\u009e\3\2\2\2\u00a0\u00a1\3\2\2\2\u00a1\u009f\3\2\2\2\u00a1\u00a2\3\2"+
 		"\2\2\u00a2\36\3\2\2\2\u00a3\u00a5\t\3\2\2\u00a4\u00a3\3\2\2\2\u00a5\u00a6"+
 		"\3\2\2\2\u00a6\u00a4\3\2\2\2\u00a6\u00a7\3\2\2\2\u00a7 \3\2\2\2\u00a8"+

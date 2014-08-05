@@ -1,7 +1,7 @@
 grammar Cobol4;
 
 compilationUnit: (.*? (mockMeta cobolToken))*;
-mockMeta:      COMMENT MOCKUP callStatement;
+mockMeta:      MOCKBEGIN MOCKUP callStatement;
 callStatement: CALL (TEXT | STRING ) (usingClause)?;
 usingClause:   USING (dataIdentifier)+;
 dataIdentifier: (addressOfClause | lengthOfClause)? dataName;
@@ -28,7 +28,7 @@ TOKEN  :       MOVE
              | ENDCALL
 	     | CALL
              | '.'                  ;
-COMMENT:       '*'                  ;
+MOCKBEGIN:       '@'                  ;
 
 INT    :       [0-9]+               ;
 TEXT   :       [a-zA-Z0-9*]+        ;

@@ -19,7 +19,7 @@ import cobmock.cobol.parser.Cobol4Parser.CompilationUnitContext;
 import cobmock.cobol.parser.Cobol4Parser.MockMetaContext;
 import cobmock.cobol.parser.Cobol4Parser.UsingClauseContext;
 
-public class ParseBasicFile {
+public class ParseBasicFileTest {
 	private CompilationUnitContext ctx;
 	
 	@Before
@@ -64,16 +64,29 @@ public class ParseBasicFile {
 		assertEquals(1, usingCtx.dataIdentifier().size());
 	}
 	@Test
-	public void extractUsingClauseWithMultipleDataItems() {
+	public void extractDataItemIdentifiersFromUsingClauseWithMultipleData() {
 		MockMetaContext mockCtx = ctx.mockMeta(0);
 		UsingClauseContext usingCtx = mockCtx.callStatement().usingClause();
 		assertEquals(4, usingCtx.dataIdentifier().size());
 		assertEquals("TESTA", usingCtx.dataIdentifier(0).dataName().TEXT().toString());
 		assertEquals("TESTB", usingCtx.dataIdentifier(1).dataName().TEXT().toString());
 		assertEquals("TESTC", usingCtx.dataIdentifier(2).dataName().TEXT().toString());
-		assertEquals("TEST5", usingCtx.dataIdentifier(3).dataName().TEXT().toString());
+		assertEquals("TEST5", usingCtx.dataIdentifier(3).dataName().TEXT().toString());		
+	}
+	@Test
+	public void extractAddressOfClauseFromDataIdentifiers() {
+		MockMetaContext mockCtx = ctx.mockMeta(0);
+		UsingClauseContext usingCtx = mockCtx.callStatement().usingClause();
+		assertEquals("addressof", usingCtx.dataIdentifier(1).addressOfClause().getText().toLowerCase());
+		assertEquals(null, usingCtx.dataIdentifier(0).addressOfClause());
 		assertEquals(null, usingCtx.dataIdentifier(2).addressOfClause());
-		
+		assertEquals(null, usingCtx.dataIdentifier(3).addressOfClause());
+	}
+	@Test
+	public void extractLengthOfClauseFromDataIdentifiers() {
+		MockMetaContext mockCtx = ctx.mockMeta(0);
+		UsingClauseContext usingCtx = mockCtx.callStatement().usingClause();
+		assertEquals("lengthof", usingCtx.dataIdentifier(2).lengthOfClause().getText().toLowerCase());
 	}
 
 
