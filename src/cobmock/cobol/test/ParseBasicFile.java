@@ -1,6 +1,7 @@
 package cobmock.cobol.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,16 +10,17 @@ import java.io.InputStream;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
 import org.junit.Before;
 import org.junit.Test;
 
 import cobmock.cobol.parser.Cobol4Lexer;
 import cobmock.cobol.parser.Cobol4Parser;
 import cobmock.cobol.parser.Cobol4Parser.CompilationUnitContext;
+import cobmock.cobol.parser.Cobol4Parser.MockMetaContext;
+import cobmock.cobol.parser.Cobol4Parser.UsingClauseContext;
 
 public class ParseBasicFile {
-	private Cobol4Parser parser;
+	private CompilationUnitContext ctx;
 	
 	@Before
 	public void initCobolParser() throws IOException {
@@ -26,8 +28,8 @@ public class ParseBasicFile {
 		ANTLRInputStream input = new ANTLRInputStream(is);
 		Cobol4Lexer lexer = new Cobol4Lexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);		
-		parser = new Cobol4Parser(tokens);
-		System.out.println(parser.compilationUnit().toStringTree());
+		Cobol4Parser parser = new Cobol4Parser(tokens);
+		ctx = parser.compilationUnit();
 	}
 	
 	@Test(expected=FileNotFoundException.class)
@@ -37,15 +39,42 @@ public class ParseBasicFile {
 	
 	@Test
 	public void generateParserWithoutException() throws IOException {
-		assertNull(parser.compilationUnit().exception);
+		assertNull(ctx.exception);
 	}
 	
 	@Test
 	public void extractCorrectNumberOfMockStatements() {
-		CompilationUnitContext ctx = parser.compilationUnit();
-		System.out.println(ctx.cobolToken(1));
+		assertEquals(2, ctx.mockMeta().size());
 	}
-	
+	@Test
+	public void extractDynamicCallTarget() {
+		MockMetaContext mockCtx = ctx.mockMeta(0);
+		assertEquals("KSBUTTT", mockCtx.callStatement().TEXT().toString());
+	}
+	@Test
+	public void extractStaticCallTarget() {
+		MockMetaContext mockCtx = ctx.mockMeta(1);
+		assertEquals("\"KSBU510\"", mockCtx.callStatement().STRING().toString());
+	}
+	@Test 
+	public void extractUsingClauseWithOneDataItem() {
+		MockMetaContext mockCtx = ctx.mockMeta(1);
+		UsingClauseContext usingCtx = mockCtx.callStatement().usingClause();
+		assertEquals("KKTW001", usingCtx.dataIdentifier(0).getText());
+		assertEquals(1, usingCtx.dataIdentifier().size());
+	}
+	@Test
+	public void extractUsingClauseWithMultipleDataItems() {
+		MockMetaContext mockCtx = ctx.mockMeta(0);
+		UsingClauseContext usingCtx = mockCtx.callStatement().usingClause();
+		assertEquals(4, usingCtx.dataIdentifier().size());
+		assertEquals("TESTA", usingCtx.dataIdentifier(0).dataName().TEXT().toString());
+		assertEquals("TESTB", usingCtx.dataIdentifier(1).dataName().TEXT().toString());
+		assertEquals("TESTC", usingCtx.dataIdentifier(2).dataName().TEXT().toString());
+		assertEquals("TEST5", usingCtx.dataIdentifier(3).dataName().TEXT().toString());
+		assertEquals(null, usingCtx.dataIdentifier(2).addressOfClause());
+		
+	}
 
 
 }

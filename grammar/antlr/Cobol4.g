@@ -1,6 +1,6 @@
 grammar Cobol4;
 
-compilationUnit: .*? (mockMeta cobolToken)* .*?;
+compilationUnit: (.*? (mockMeta cobolToken))*;
 mockMeta:      COMMENT MOCKUP callStatement;
 callStatement: CALL (TEXT | STRING ) (usingClause)?;
 usingClause:   USING (dataIdentifier)+;

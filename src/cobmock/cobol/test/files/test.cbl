@@ -6,6 +6,5 @@ call KSBUTTT using TESTA
 .
 blablabla
 * @up-call
-call KSBU510 using KKTW001
+call "KSBU510" using KKTW001
 .
-Exit
