@@ -1,6 +1,6 @@
 grammar Cobol4;
 
-compilationUnit: .*? (mockMeta cobolToken .*?)+;
+compilationUnit: .*? (mockMeta cobolToken)* .*?;
 mockMeta:      COMMENT MOCKUP callStatement;
 callStatement: CALL (TEXT | STRING ) (usingClause)?;
 usingClause:   USING (dataIdentifier)+;
@@ -34,7 +34,7 @@ INT    :       [0-9]+               ;
 TEXT   :       [a-zA-Z0-9*]+        ;
 STRING :       '\'' .*? '\''        
              | '"'  .*? '"'         ; 
-NEWLINE:       '\r'? '\n'   ;     
+NEWLINE:       '\r'? '\n'  -> skip  ;     
 WS     :       [ \t]+ -> skip       ; 
 
 

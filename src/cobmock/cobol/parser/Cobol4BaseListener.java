@@ -17,25 +17,13 @@ public class Cobol4BaseListener implements Cobol4Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLengthOfClause(@NotNull Cobol4Parser.LengthOfClauseContext ctx) { }
+	@Override public void enterAddressOfClause(@NotNull Cobol4Parser.AddressOfClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLengthOfClause(@NotNull Cobol4Parser.LengthOfClauseContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx) { }
+	@Override public void exitAddressOfClause(@NotNull Cobol4Parser.AddressOfClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -53,13 +41,13 @@ public class Cobol4BaseListener implements Cobol4Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAddressOfClause(@NotNull Cobol4Parser.AddressOfClauseContext ctx) { }
+	@Override public void enterLengthOfClause(@NotNull Cobol4Parser.LengthOfClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAddressOfClause(@NotNull Cobol4Parser.AddressOfClauseContext ctx) { }
+	@Override public void exitLengthOfClause(@NotNull Cobol4Parser.LengthOfClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -89,13 +77,13 @@ public class Cobol4BaseListener implements Cobol4Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDataName(@NotNull Cobol4Parser.DataNameContext ctx) { }
+	@Override public void enterCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDataName(@NotNull Cobol4Parser.DataNameContext ctx) { }
+	@Override public void exitCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -120,6 +108,18 @@ public class Cobol4BaseListener implements Cobol4Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUsingClause(@NotNull Cobol4Parser.UsingClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDataName(@NotNull Cobol4Parser.DataNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDataName(@NotNull Cobol4Parser.DataNameContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
