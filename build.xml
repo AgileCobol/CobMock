@@ -16,21 +16,13 @@
 	<target name="compile-sources" depends="grammar">
 		<sequential>
 			<echo>Compiling sources...</echo>
-			<javac srcdir="src/cobmock/cobol" destdir="build/" debug="on" source="1.7">
+			<javac srcdir="src/cobmock/" destdir="build/" debug="on" source="1.7" includeantruntime="false">
 				<classpath>
 					<fileset dir="lib">
 						<include name="*.jar" />
 					</fileset>
 				</classpath>
-			</javac>
-			<echo>Compiling unit tests...</echo>
-			<javac srcdir="src/cobmock/cobol/test/" destdir="build/" debug="on" source="1.7">
-				<classpath>
-					<fileset dir="lib">
-						<include name="*.jar" />
-					</fileset>
-				</classpath>
-			</javac>
+			</javac>			
 		</sequential>
 	</target>
 	
@@ -46,8 +38,10 @@
 
 				<formatter type="brief" usefile="no" />
 
-				<test name="cobmock.cobol.test.ParseBasicFile" />
+				<test name="cobmock.cobol.test.ParseBasicFileTest" />
 				<test name="cobmock.cobol.test.CommentPreprocessorTest" />
+				<test name="cobmock.cobol.test.MockStatementPreprocessorTest" />
+				<test name="cobmock.cobol.test.PreprocessorPipelineTest" />
 			</junit>
 		</target>
 

@@ -21,7 +21,7 @@ public class Cobol4Parser extends Parser {
 		OF=9, IN=10, LENGTH=11, TOKEN=12, MOCKBEGIN=13, INT=14, TEXT=15, STRING=16, 
 		NEWLINE=17, WS=18;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'('", "')'", "MOVE", "MOCKUP", "ENDCALL", "USING", "CALL", 
+		"<INVALID>", "')'", "'('", "MOVE", "MOCKUP", "ENDCALL", "USING", "CALL", 
 		"ADDRESS", "OF", "IN", "LENGTH", "TOKEN", "'@'", "INT", "TEXT", "STRING", 
 		"NEWLINE", "WS"
 	};
@@ -54,14 +54,14 @@ public class Cobol4Parser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class CompilationUnitContext extends ParserRuleContext {
+		public CobolTokenContext cobolToken(int i) {
+			return getRuleContext(CobolTokenContext.class,i);
+		}
 		public List<MockMetaContext> mockMeta() {
 			return getRuleContexts(MockMetaContext.class);
 		}
 		public List<CobolTokenContext> cobolToken() {
 			return getRuleContexts(CobolTokenContext.class);
-		}
-		public CobolTokenContext cobolToken(int i) {
-			return getRuleContext(CobolTokenContext.class,i);
 		}
 		public MockMetaContext mockMeta(int i) {
 			return getRuleContext(MockMetaContext.class,i);
@@ -134,11 +134,11 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class MockMetaContext extends ParserRuleContext {
-		public TerminalNode MOCKBEGIN() { return getToken(Cobol4Parser.MOCKBEGIN, 0); }
+		public TerminalNode MOCKUP() { return getToken(Cobol4Parser.MOCKUP, 0); }
 		public CallStatementContext callStatement() {
 			return getRuleContext(CallStatementContext.class,0);
 		}
-		public TerminalNode MOCKUP() { return getToken(Cobol4Parser.MOCKUP, 0); }
+		public TerminalNode MOCKBEGIN() { return getToken(Cobol4Parser.MOCKBEGIN, 0); }
 		public MockMetaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -176,12 +176,12 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class CallStatementContext extends ParserRuleContext {
-		public TerminalNode TEXT() { return getToken(Cobol4Parser.TEXT, 0); }
-		public TerminalNode CALL() { return getToken(Cobol4Parser.CALL, 0); }
-		public TerminalNode STRING() { return getToken(Cobol4Parser.STRING, 0); }
 		public UsingClauseContext usingClause() {
 			return getRuleContext(UsingClauseContext.class,0);
 		}
+		public TerminalNode CALL() { return getToken(Cobol4Parser.CALL, 0); }
+		public TerminalNode TEXT() { return getToken(Cobol4Parser.TEXT, 0); }
+		public TerminalNode STRING() { return getToken(Cobol4Parser.STRING, 0); }
 		public CallStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -235,10 +235,10 @@ public class Cobol4Parser extends Parser {
 		public DataIdentifierContext dataIdentifier(int i) {
 			return getRuleContext(DataIdentifierContext.class,i);
 		}
-		public TerminalNode USING() { return getToken(Cobol4Parser.USING, 0); }
 		public List<DataIdentifierContext> dataIdentifier() {
 			return getRuleContexts(DataIdentifierContext.class);
 		}
+		public TerminalNode USING() { return getToken(Cobol4Parser.USING, 0); }
 		public UsingClauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -349,8 +349,8 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class AddressOfClauseContext extends ParserRuleContext {
-		public TerminalNode ADDRESS() { return getToken(Cobol4Parser.ADDRESS, 0); }
 		public TerminalNode OF() { return getToken(Cobol4Parser.OF, 0); }
+		public TerminalNode ADDRESS() { return getToken(Cobol4Parser.ADDRESS, 0); }
 		public AddressOfClauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -425,8 +425,8 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class DataNameContext extends ParserRuleContext {
-		public TerminalNode TEXT() { return getToken(Cobol4Parser.TEXT, 0); }
 		public TerminalNode INT() { return getToken(Cobol4Parser.INT, 0); }
+		public TerminalNode TEXT() { return getToken(Cobol4Parser.TEXT, 0); }
 		public DataNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -451,11 +451,11 @@ public class Cobol4Parser extends Parser {
 			setState(59); match(TEXT);
 			setState(63);
 			_la = _input.LA(1);
-			if (_la==T__1) {
+			if (_la==T__0) {
 				{
-				setState(60); match(T__1);
+				setState(60); match(T__0);
 				setState(61); match(INT);
-				setState(62); match(T__0);
+				setState(62); match(T__1);
 				}
 			}
 
@@ -524,8 +524,8 @@ public class Cobol4Parser extends Parser {
 		"\b\2\2,.\5\n\6\2-,\3\2\2\2./\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60\t\3\2\2"+
 		"\2\61\64\5\f\7\2\62\64\5\16\b\2\63\61\3\2\2\2\63\62\3\2\2\2\63\64\3\2"+
 		"\2\2\64\65\3\2\2\2\65\66\5\20\t\2\66\13\3\2\2\2\678\7\n\2\289\7\13\2\2"+
-		"9\r\3\2\2\2:;\7\r\2\2;<\7\13\2\2<\17\3\2\2\2=A\7\21\2\2>?\7\3\2\2?@\7"+
-		"\20\2\2@B\7\4\2\2A>\3\2\2\2AB\3\2\2\2B\21\3\2\2\2CD\7\16\2\2D\23\3\2\2"+
+		"9\r\3\2\2\2:;\7\r\2\2;<\7\13\2\2<\17\3\2\2\2=A\7\21\2\2>?\7\4\2\2?@\7"+
+		"\20\2\2@B\7\3\2\2A>\3\2\2\2AB\3\2\2\2B\21\3\2\2\2CD\7\16\2\2D\23\3\2\2"+
 		"\2\b\27\37)/\63A";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
