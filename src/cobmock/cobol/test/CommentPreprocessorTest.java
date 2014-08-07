@@ -18,7 +18,7 @@ public class CommentPreprocessorTest {
 	private String input;
 	@Before
 	public void initCommentPreprocessor() throws IOException {
-		InputStream is = new FileInputStream("src/cobmock/cobol/test/files/preprocessingTest.cbl");
+		InputStream is = new FileInputStream("test/files/cobol/preprocessingTest.cbl");
 		input = FileReaderHelper.fromStream(is);
 		commentPreProc = new CommentPreprocessor();
 	}

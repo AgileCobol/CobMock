@@ -24,7 +24,7 @@ public class ParseBasicFileTest {
 	
 	@Before
 	public void initCobolParser() throws IOException {
-		InputStream is = new FileInputStream("src/cobmock/cobol/test/files/test.cbl");
+		InputStream is = new FileInputStream("test/files/cobol/test.cbl");
 		ANTLRInputStream input = new ANTLRInputStream(is);
 		Cobol4Lexer lexer = new Cobol4Lexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);		

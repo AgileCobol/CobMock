@@ -21,5 +21,5 @@ INT    :       [0-9]+               ;
 TEXT   :       [a-zA-Z0-9*]+        ;
 STRING :       '\'' .*? '\''        
              | '"'  .*? '"'         ; 
-NEWLINE:       '\r'? '\n'  -> skip  ;     
-WS     :       [ \t'!']+ -> skip       ; 
+NEWLINE:       '\r'? '\n'  -> channel(HIDDEN)  ;     
+WS     :       [ \t'!']+ -> channel(HIDDEN)    ; 

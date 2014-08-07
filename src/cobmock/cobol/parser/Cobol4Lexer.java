@@ -145,7 +145,7 @@ public class Cobol4Lexer extends Lexer {
 		"\b.\2\2\u0101\\\3\2\2\2\u0102\u0104\t\36\2\2\u0103\u0102\3\2\2\2\u0104"+
 		"\u0105\3\2\2\2\u0105\u0103\3\2\2\2\u0105\u0106\3\2\2\2\u0106\u0107\3\2"+
 		"\2\2\u0107\u0108\b/\2\2\u0108^\3\2\2\2\13\2\u00dd\u00e2\u00e7\u00ed\u00f5"+
-		"\u00f9\u00fc\u0105\3\b\2\2";
+		"\u00f9\u00fc\u0105\3\2\3\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

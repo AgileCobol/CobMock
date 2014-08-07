@@ -19,7 +19,7 @@ public class PreprocessorPipelineTest {
 	
 	@Before
 	public void initCommentPreprocessor() throws IOException {
-		InputStream is = new FileInputStream("src/cobmock/cobol/test/files/pipeline.cbl");
+		InputStream is = new FileInputStream("test/files/cobol/pipeline.cbl");
 		input = FileReaderHelper.fromStream(is);
 	}
 
