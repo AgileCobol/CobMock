@@ -1,35 +1,27 @@
 package cobmock.cobol.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.Before;
 import org.junit.Test;
 
-import cobmock.cobol.parser.Cobol4Lexer;
-import cobmock.cobol.parser.Cobol4Parser;
-import cobmock.cobol.parser.Cobol4Parser.CompilationUnitContext;
+import cobmock.cobol.parser.MockCobolParser;
+import cobmock.cobol.parser.MockCobolParser.CompilationUnitContext;
+import cobmock.helper.ParserTool;
 
 public class MockIdTest {
 	private CompilationUnitContext ctx;
 	
 	@Before
 	public void initCobolParser() throws IOException {
-		InputStream is = new FileInputStream("test/files/cobol/mockIdTest.cbl");
-		ANTLRInputStream input = new ANTLRInputStream(is);
-		Cobol4Lexer lexer = new Cobol4Lexer(input);
-		CommonTokenStream tokens = new CommonTokenStream(lexer);		
-		Cobol4Parser parser = new Cobol4Parser(tokens);
+		MockCobolParser parser = ParserTool.getMockCobolParserForFile("test/files/cobol/mockIdTest.cbl");
 		ctx = parser.compilationUnit();
 	}
 	
 	@Test
-	public void correctIdIsExtractedFromMockStatement() {
+	public void extractIdFromMockStatement() {
 		assertEquals("\"ksbu501-call\"", ctx.mockMeta(0).mockIdentifier().STRING().toString());
 	}
 

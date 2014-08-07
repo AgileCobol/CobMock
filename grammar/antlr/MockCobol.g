@@ -1,6 +1,6 @@
-grammar Cobol4;
+grammar MockCobol;
 
-import fragments, cobolTokens;
+import fragments, cobolTokens, defaults;
 
 compilationUnit: (.*? (mockMeta cobolToken))*;
 mockMeta:      MOCKBEGIN mockIdentifier callStatement;

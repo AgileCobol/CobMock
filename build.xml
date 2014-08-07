@@ -3,7 +3,7 @@
 	
 	<target name="grammar">
 		<echo>Generate Cobol Parser</echo>
-		<antlr-gen grammar="grammar/antlr/Cobol4.g" />
+		<antlr-gen grammar="grammar/antlr/MockCobol.g" />
 	</target>
 	
 	<target name="bootstrap-build">

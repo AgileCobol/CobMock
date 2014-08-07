@@ -1,4 +1,4 @@
-// Generated from grammar/antlr/Cobol4.g by ANTLR 4.4
+// Generated from grammar/antlr/MockCobol.g by ANTLR 4.4
 package cobmock.cobol.parser;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class Cobol4Lexer extends Lexer {
+public class MockCobolLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -39,13 +39,13 @@ public class Cobol4Lexer extends Lexer {
 	};
 
 
-	public Cobol4Lexer(CharStream input) {
+	public MockCobolLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Cobol4.g"; }
+	public String getGrammarFileName() { return "MockCobol.g"; }
 
 	@Override
 	public String[] getTokenNames() { return tokenNames; }

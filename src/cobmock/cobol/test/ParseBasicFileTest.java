@@ -13,22 +13,19 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.Before;
 import org.junit.Test;
 
-import cobmock.cobol.parser.Cobol4Lexer;
-import cobmock.cobol.parser.Cobol4Parser;
-import cobmock.cobol.parser.Cobol4Parser.CompilationUnitContext;
-import cobmock.cobol.parser.Cobol4Parser.MockMetaContext;
-import cobmock.cobol.parser.Cobol4Parser.UsingClauseContext;
+import cobmock.cobol.parser.MockCobolLexer;
+import cobmock.cobol.parser.MockCobolParser;
+import cobmock.cobol.parser.MockCobolParser.CompilationUnitContext;
+import cobmock.cobol.parser.MockCobolParser.MockMetaContext;
+import cobmock.cobol.parser.MockCobolParser.UsingClauseContext;
+import cobmock.helper.ParserTool;
 
 public class ParseBasicFileTest {
 	private CompilationUnitContext ctx;
 	
 	@Before
 	public void initCobolParser() throws IOException {
-		InputStream is = new FileInputStream("test/files/cobol/test.cbl");
-		ANTLRInputStream input = new ANTLRInputStream(is);
-		Cobol4Lexer lexer = new Cobol4Lexer(input);
-		CommonTokenStream tokens = new CommonTokenStream(lexer);		
-		Cobol4Parser parser = new Cobol4Parser(tokens);
+		MockCobolParser parser = ParserTool.getMockCobolParserForFile("test/files/cobol/test.cbl");
 		ctx = parser.compilationUnit();
 	}
 	
@@ -43,7 +40,7 @@ public class ParseBasicFileTest {
 	}
 	
 	@Test
-	public void extractCorrectNumberOfMockStatements() {
+	public void countExtractedMockStatements() {
 		assertEquals(2, ctx.mockMeta().size());
 	}
 	@Test

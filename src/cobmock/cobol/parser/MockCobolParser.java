@@ -1,4 +1,4 @@
-// Generated from grammar/antlr/Cobol4.g by ANTLR 4.4
+// Generated from grammar/antlr/MockCobol.g by ANTLR 4.4
 package cobmock.cobol.parser;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class Cobol4Parser extends Parser {
+public class MockCobolParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -36,7 +36,7 @@ public class Cobol4Parser extends Parser {
 	};
 
 	@Override
-	public String getGrammarFileName() { return "Cobol4.g"; }
+	public String getGrammarFileName() { return "MockCobol.g"; }
 
 	@Override
 	public String[] getTokenNames() { return tokenNames; }
@@ -50,7 +50,7 @@ public class Cobol4Parser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public Cobol4Parser(TokenStream input) {
+	public MockCobolParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -73,11 +73,11 @@ public class Cobol4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_compilationUnit; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterCompilationUnit(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterCompilationUnit(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitCompilationUnit(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitCompilationUnit(this);
 		}
 	}
 
@@ -141,18 +141,18 @@ public class Cobol4Parser extends Parser {
 		public CallStatementContext callStatement() {
 			return getRuleContext(CallStatementContext.class,0);
 		}
-		public TerminalNode MOCKBEGIN() { return getToken(Cobol4Parser.MOCKBEGIN, 0); }
+		public TerminalNode MOCKBEGIN() { return getToken(MockCobolParser.MOCKBEGIN, 0); }
 		public MockMetaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_mockMeta; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterMockMeta(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterMockMeta(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitMockMeta(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitMockMeta(this);
 		}
 	}
 
@@ -179,19 +179,19 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class MockIdentifierContext extends ParserRuleContext {
-		public TerminalNode MOCKUP() { return getToken(Cobol4Parser.MOCKUP, 0); }
-		public TerminalNode STRING() { return getToken(Cobol4Parser.STRING, 0); }
+		public TerminalNode MOCKUP() { return getToken(MockCobolParser.MOCKUP, 0); }
+		public TerminalNode STRING() { return getToken(MockCobolParser.STRING, 0); }
 		public MockIdentifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_mockIdentifier; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterMockIdentifier(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterMockIdentifier(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitMockIdentifier(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitMockIdentifier(this);
 		}
 	}
 
@@ -229,20 +229,20 @@ public class Cobol4Parser extends Parser {
 		public UsingClauseContext usingClause() {
 			return getRuleContext(UsingClauseContext.class,0);
 		}
-		public TerminalNode CALL() { return getToken(Cobol4Parser.CALL, 0); }
-		public TerminalNode TEXT() { return getToken(Cobol4Parser.TEXT, 0); }
-		public TerminalNode STRING() { return getToken(Cobol4Parser.STRING, 0); }
+		public TerminalNode CALL() { return getToken(MockCobolParser.CALL, 0); }
+		public TerminalNode TEXT() { return getToken(MockCobolParser.TEXT, 0); }
+		public TerminalNode STRING() { return getToken(MockCobolParser.STRING, 0); }
 		public CallStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_callStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterCallStatement(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterCallStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitCallStatement(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitCallStatement(this);
 		}
 	}
 
@@ -288,18 +288,18 @@ public class Cobol4Parser extends Parser {
 		public List<DataIdentifierContext> dataIdentifier() {
 			return getRuleContexts(DataIdentifierContext.class);
 		}
-		public TerminalNode USING() { return getToken(Cobol4Parser.USING, 0); }
+		public TerminalNode USING() { return getToken(MockCobolParser.USING, 0); }
 		public UsingClauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_usingClause; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterUsingClause(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterUsingClause(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitUsingClause(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitUsingClause(this);
 		}
 	}
 
@@ -353,11 +353,11 @@ public class Cobol4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_dataIdentifier; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterDataIdentifier(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterDataIdentifier(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitDataIdentifier(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitDataIdentifier(this);
 		}
 	}
 
@@ -399,19 +399,19 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class AddressOfClauseContext extends ParserRuleContext {
-		public TerminalNode OF() { return getToken(Cobol4Parser.OF, 0); }
-		public TerminalNode ADDRESS() { return getToken(Cobol4Parser.ADDRESS, 0); }
+		public TerminalNode OF() { return getToken(MockCobolParser.OF, 0); }
+		public TerminalNode ADDRESS() { return getToken(MockCobolParser.ADDRESS, 0); }
 		public AddressOfClauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_addressOfClause; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterAddressOfClause(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterAddressOfClause(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitAddressOfClause(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitAddressOfClause(this);
 		}
 	}
 
@@ -437,19 +437,19 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class LengthOfClauseContext extends ParserRuleContext {
-		public TerminalNode OF() { return getToken(Cobol4Parser.OF, 0); }
-		public TerminalNode LENGTH() { return getToken(Cobol4Parser.LENGTH, 0); }
+		public TerminalNode OF() { return getToken(MockCobolParser.OF, 0); }
+		public TerminalNode LENGTH() { return getToken(MockCobolParser.LENGTH, 0); }
 		public LengthOfClauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_lengthOfClause; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterLengthOfClause(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterLengthOfClause(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitLengthOfClause(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitLengthOfClause(this);
 		}
 	}
 
@@ -475,19 +475,19 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class DataNameContext extends ParserRuleContext {
-		public TerminalNode INT() { return getToken(Cobol4Parser.INT, 0); }
-		public TerminalNode TEXT() { return getToken(Cobol4Parser.TEXT, 0); }
+		public TerminalNode INT() { return getToken(MockCobolParser.INT, 0); }
+		public TerminalNode TEXT() { return getToken(MockCobolParser.TEXT, 0); }
 		public DataNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_dataName; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterDataName(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterDataName(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitDataName(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitDataName(this);
 		}
 	}
 
@@ -523,18 +523,18 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class CobolTokenContext extends ParserRuleContext {
-		public TerminalNode TOKEN() { return getToken(Cobol4Parser.TOKEN, 0); }
+		public TerminalNode TOKEN() { return getToken(MockCobolParser.TOKEN, 0); }
 		public CobolTokenContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_cobolToken; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterCobolToken(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).enterCobolToken(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitCobolToken(this);
+			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitCobolToken(this);
 		}
 	}
 

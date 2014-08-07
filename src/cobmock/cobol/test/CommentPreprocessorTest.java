@@ -31,7 +31,7 @@ public class CommentPreprocessorTest {
 		}
 	}
 	@Test
-	public void correctNumberOfCobolLinesRemainInResult() {
+	public void checkNumberOfCobolLinesInResult() {
 		String result = commentPreProc.preprocess(input);
 		assertEquals(3, result.split("\\r?\\n").length);
 	}
