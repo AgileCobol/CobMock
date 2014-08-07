@@ -42,6 +42,7 @@
 				<test name="cobmock.cobol.test.CommentPreprocessorTest" />
 				<test name="cobmock.cobol.test.MockStatementPreprocessorTest" />
 				<test name="cobmock.cobol.test.PreprocessorPipelineTest" />
+				<test name="cobmock.cobol.test.MockIdTest" />
 			</junit>
 		</target>
 

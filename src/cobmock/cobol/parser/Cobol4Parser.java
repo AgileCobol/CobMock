@@ -17,21 +17,22 @@ public class Cobol4Parser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__1=1, T__0=2, MOVE=3, MOCKUP=4, ENDCALL=5, USING=6, CALL=7, ADDRESS=8, 
-		OF=9, IN=10, LENGTH=11, TOKEN=12, MOCKBEGIN=13, INT=14, TEXT=15, STRING=16, 
-		NEWLINE=17, WS=18;
+		T__2=1, T__1=2, T__0=3, MOCKUP=4, MOCKBEGIN=5, MOVE=6, ENDCALL=7, USING=8, 
+		CALL=9, ADDRESS=10, OF=11, IN=12, LENGTH=13, SET=14, TOKEN=15, INT=16, 
+		TEXT=17, STRING=18, NEWLINE=19, WS=20;
 	public static final String[] tokenNames = {
-		"<INVALID>", "')'", "'('", "MOVE", "MOCKUP", "ENDCALL", "USING", "CALL", 
-		"ADDRESS", "OF", "IN", "LENGTH", "TOKEN", "'@'", "INT", "TEXT", "STRING", 
-		"NEWLINE", "WS"
+		"<INVALID>", "'id='", "')'", "'('", "MOCKUP", "'@'", "MOVE", "ENDCALL", 
+		"USING", "CALL", "ADDRESS", "OF", "IN", "LENGTH", "SET", "TOKEN", "INT", 
+		"TEXT", "STRING", "NEWLINE", "WS"
 	};
 	public static final int
-		RULE_compilationUnit = 0, RULE_mockMeta = 1, RULE_callStatement = 2, RULE_usingClause = 3, 
-		RULE_dataIdentifier = 4, RULE_addressOfClause = 5, RULE_lengthOfClause = 6, 
-		RULE_dataName = 7, RULE_cobolToken = 8;
+		RULE_compilationUnit = 0, RULE_mockMeta = 1, RULE_mockIdentifier = 2, 
+		RULE_callStatement = 3, RULE_usingClause = 4, RULE_dataIdentifier = 5, 
+		RULE_addressOfClause = 6, RULE_lengthOfClause = 7, RULE_dataName = 8, 
+		RULE_cobolToken = 9;
 	public static final String[] ruleNames = {
-		"compilationUnit", "mockMeta", "callStatement", "usingClause", "dataIdentifier", 
-		"addressOfClause", "lengthOfClause", "dataName", "cobolToken"
+		"compilationUnit", "mockMeta", "mockIdentifier", "callStatement", "usingClause", 
+		"dataIdentifier", "addressOfClause", "lengthOfClause", "dataName", "cobolToken"
 	};
 
 	@Override
@@ -88,35 +89,35 @@ public class Cobol4Parser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(29);
+			setState(31);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__0) | (1L << MOVE) | (1L << MOCKUP) | (1L << ENDCALL) | (1L << USING) | (1L << CALL) | (1L << ADDRESS) | (1L << OF) | (1L << IN) | (1L << LENGTH) | (1L << TOKEN) | (1L << MOCKBEGIN) | (1L << INT) | (1L << TEXT) | (1L << STRING) | (1L << NEWLINE) | (1L << WS))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__1) | (1L << T__0) | (1L << MOCKUP) | (1L << MOCKBEGIN) | (1L << MOVE) | (1L << ENDCALL) | (1L << USING) | (1L << CALL) | (1L << ADDRESS) | (1L << OF) | (1L << IN) | (1L << LENGTH) | (1L << SET) | (1L << TOKEN) | (1L << INT) | (1L << TEXT) | (1L << STRING) | (1L << NEWLINE) | (1L << WS))) != 0)) {
 				{
 				{
-				setState(21);
+				setState(23);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
 				while ( _alt!=1 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1+1 ) {
 						{
 						{
-						setState(18);
+						setState(20);
 						matchWildcard();
 						}
 						} 
 					}
-					setState(23);
+					setState(25);
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
 				}
 				{
-				setState(24); mockMeta();
-				setState(25); cobolToken();
+				setState(26); mockMeta();
+				setState(27); cobolToken();
 				}
 				}
 				}
-				setState(31);
+				setState(33);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -134,7 +135,9 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static class MockMetaContext extends ParserRuleContext {
-		public TerminalNode MOCKUP() { return getToken(Cobol4Parser.MOCKUP, 0); }
+		public MockIdentifierContext mockIdentifier() {
+			return getRuleContext(MockIdentifierContext.class,0);
+		}
 		public CallStatementContext callStatement() {
 			return getRuleContext(CallStatementContext.class,0);
 		}
@@ -159,9 +162,56 @@ public class Cobol4Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(32); match(MOCKBEGIN);
-			setState(33); match(MOCKUP);
-			setState(34); callStatement();
+			setState(34); match(MOCKBEGIN);
+			setState(35); mockIdentifier();
+			setState(36); callStatement();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class MockIdentifierContext extends ParserRuleContext {
+		public TerminalNode MOCKUP() { return getToken(Cobol4Parser.MOCKUP, 0); }
+		public TerminalNode STRING() { return getToken(Cobol4Parser.STRING, 0); }
+		public MockIdentifierContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_mockIdentifier; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).enterMockIdentifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof Cobol4Listener ) ((Cobol4Listener)listener).exitMockIdentifier(this);
+		}
+	}
+
+	public final MockIdentifierContext mockIdentifier() throws RecognitionException {
+		MockIdentifierContext _localctx = new MockIdentifierContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_mockIdentifier);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(38); match(MOCKUP);
+			setState(41);
+			_la = _input.LA(1);
+			if (_la==T__2) {
+				{
+				setState(39); match(T__2);
+				setState(40); match(STRING);
+				}
+			}
+
 			}
 		}
 		catch (RecognitionException re) {
@@ -198,23 +248,23 @@ public class Cobol4Parser extends Parser {
 
 	public final CallStatementContext callStatement() throws RecognitionException {
 		CallStatementContext _localctx = new CallStatementContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_callStatement);
+		enterRule(_localctx, 6, RULE_callStatement);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(36); match(CALL);
-			setState(37);
+			setState(43); match(CALL);
+			setState(44);
 			_la = _input.LA(1);
 			if ( !(_la==TEXT || _la==STRING) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
-			setState(39);
+			setState(46);
 			_la = _input.LA(1);
 			if (_la==USING) {
 				{
-				setState(38); usingClause();
+				setState(45); usingClause();
 				}
 			}
 
@@ -255,22 +305,22 @@ public class Cobol4Parser extends Parser {
 
 	public final UsingClauseContext usingClause() throws RecognitionException {
 		UsingClauseContext _localctx = new UsingClauseContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_usingClause);
+		enterRule(_localctx, 8, RULE_usingClause);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(41); match(USING);
-			setState(43); 
+			setState(48); match(USING);
+			setState(50); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(42); dataIdentifier();
+				setState(49); dataIdentifier();
 				}
 				}
-				setState(45); 
+				setState(52); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ADDRESS) | (1L << LENGTH) | (1L << TEXT))) != 0) );
@@ -313,20 +363,20 @@ public class Cobol4Parser extends Parser {
 
 	public final DataIdentifierContext dataIdentifier() throws RecognitionException {
 		DataIdentifierContext _localctx = new DataIdentifierContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_dataIdentifier);
+		enterRule(_localctx, 10, RULE_dataIdentifier);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(49);
+			setState(56);
 			switch (_input.LA(1)) {
 			case ADDRESS:
 				{
-				setState(47); addressOfClause();
+				setState(54); addressOfClause();
 				}
 				break;
 			case LENGTH:
 				{
-				setState(48); lengthOfClause();
+				setState(55); lengthOfClause();
 				}
 				break;
 			case TEXT:
@@ -334,7 +384,7 @@ public class Cobol4Parser extends Parser {
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(51); dataName();
+			setState(58); dataName();
 			}
 		}
 		catch (RecognitionException re) {
@@ -367,12 +417,12 @@ public class Cobol4Parser extends Parser {
 
 	public final AddressOfClauseContext addressOfClause() throws RecognitionException {
 		AddressOfClauseContext _localctx = new AddressOfClauseContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_addressOfClause);
+		enterRule(_localctx, 12, RULE_addressOfClause);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(53); match(ADDRESS);
-			setState(54); match(OF);
+			setState(60); match(ADDRESS);
+			setState(61); match(OF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -405,12 +455,12 @@ public class Cobol4Parser extends Parser {
 
 	public final LengthOfClauseContext lengthOfClause() throws RecognitionException {
 		LengthOfClauseContext _localctx = new LengthOfClauseContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_lengthOfClause);
+		enterRule(_localctx, 14, RULE_lengthOfClause);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(56); match(LENGTH);
-			setState(57); match(OF);
+			setState(63); match(LENGTH);
+			setState(64); match(OF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -443,19 +493,19 @@ public class Cobol4Parser extends Parser {
 
 	public final DataNameContext dataName() throws RecognitionException {
 		DataNameContext _localctx = new DataNameContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_dataName);
+		enterRule(_localctx, 16, RULE_dataName);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(59); match(TEXT);
-			setState(63);
+			setState(66); match(TEXT);
+			setState(70);
 			_la = _input.LA(1);
 			if (_la==T__0) {
 				{
-				setState(60); match(T__0);
-				setState(61); match(INT);
-				setState(62); match(T__1);
+				setState(67); match(T__0);
+				setState(68); match(INT);
+				setState(69); match(T__1);
 				}
 			}
 
@@ -490,11 +540,11 @@ public class Cobol4Parser extends Parser {
 
 	public final CobolTokenContext cobolToken() throws RecognitionException {
 		CobolTokenContext _localctx = new CobolTokenContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_cobolToken);
+		enterRule(_localctx, 18, RULE_cobolToken);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(65); match(TOKEN);
+			setState(72); match(TOKEN);
 			}
 		}
 		catch (RecognitionException re) {
@@ -509,24 +559,25 @@ public class Cobol4Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\24F\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\7\2\26"+
-		"\n\2\f\2\16\2\31\13\2\3\2\3\2\3\2\7\2\36\n\2\f\2\16\2!\13\2\3\3\3\3\3"+
-		"\3\3\3\3\4\3\4\3\4\5\4*\n\4\3\5\3\5\6\5.\n\5\r\5\16\5/\3\6\3\6\5\6\64"+
-		"\n\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\t\3\t\3\t\3\t\5\tB\n\t\3\n\3\n"+
-		"\3\n\3\27\2\13\2\4\6\b\n\f\16\20\22\2\3\3\2\21\22C\2\37\3\2\2\2\4\"\3"+
-		"\2\2\2\6&\3\2\2\2\b+\3\2\2\2\n\63\3\2\2\2\f\67\3\2\2\2\16:\3\2\2\2\20"+
-		"=\3\2\2\2\22C\3\2\2\2\24\26\13\2\2\2\25\24\3\2\2\2\26\31\3\2\2\2\27\30"+
-		"\3\2\2\2\27\25\3\2\2\2\30\32\3\2\2\2\31\27\3\2\2\2\32\33\5\4\3\2\33\34"+
-		"\5\22\n\2\34\36\3\2\2\2\35\27\3\2\2\2\36!\3\2\2\2\37\35\3\2\2\2\37 \3"+
-		"\2\2\2 \3\3\2\2\2!\37\3\2\2\2\"#\7\17\2\2#$\7\6\2\2$%\5\6\4\2%\5\3\2\2"+
-		"\2&\'\7\t\2\2\')\t\2\2\2(*\5\b\5\2)(\3\2\2\2)*\3\2\2\2*\7\3\2\2\2+-\7"+
-		"\b\2\2,.\5\n\6\2-,\3\2\2\2./\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60\t\3\2\2"+
-		"\2\61\64\5\f\7\2\62\64\5\16\b\2\63\61\3\2\2\2\63\62\3\2\2\2\63\64\3\2"+
-		"\2\2\64\65\3\2\2\2\65\66\5\20\t\2\66\13\3\2\2\2\678\7\n\2\289\7\13\2\2"+
-		"9\r\3\2\2\2:;\7\r\2\2;<\7\13\2\2<\17\3\2\2\2=A\7\21\2\2>?\7\4\2\2?@\7"+
-		"\20\2\2@B\7\3\2\2A>\3\2\2\2AB\3\2\2\2B\21\3\2\2\2CD\7\16\2\2D\23\3\2\2"+
-		"\2\b\27\37)/\63A";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\26M\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
+		"\2\7\2\30\n\2\f\2\16\2\33\13\2\3\2\3\2\3\2\7\2 \n\2\f\2\16\2#\13\2\3\3"+
+		"\3\3\3\3\3\3\3\4\3\4\3\4\5\4,\n\4\3\5\3\5\3\5\5\5\61\n\5\3\6\3\6\6\6\65"+
+		"\n\6\r\6\16\6\66\3\7\3\7\5\7;\n\7\3\7\3\7\3\b\3\b\3\b\3\t\3\t\3\t\3\n"+
+		"\3\n\3\n\3\n\5\nI\n\n\3\13\3\13\3\13\3\31\2\f\2\4\6\b\n\f\16\20\22\24"+
+		"\2\3\3\2\23\24J\2!\3\2\2\2\4$\3\2\2\2\6(\3\2\2\2\b-\3\2\2\2\n\62\3\2\2"+
+		"\2\f:\3\2\2\2\16>\3\2\2\2\20A\3\2\2\2\22D\3\2\2\2\24J\3\2\2\2\26\30\13"+
+		"\2\2\2\27\26\3\2\2\2\30\33\3\2\2\2\31\32\3\2\2\2\31\27\3\2\2\2\32\34\3"+
+		"\2\2\2\33\31\3\2\2\2\34\35\5\4\3\2\35\36\5\24\13\2\36 \3\2\2\2\37\31\3"+
+		"\2\2\2 #\3\2\2\2!\37\3\2\2\2!\"\3\2\2\2\"\3\3\2\2\2#!\3\2\2\2$%\7\7\2"+
+		"\2%&\5\6\4\2&\'\5\b\5\2\'\5\3\2\2\2(+\7\6\2\2)*\7\3\2\2*,\7\24\2\2+)\3"+
+		"\2\2\2+,\3\2\2\2,\7\3\2\2\2-.\7\13\2\2.\60\t\2\2\2/\61\5\n\6\2\60/\3\2"+
+		"\2\2\60\61\3\2\2\2\61\t\3\2\2\2\62\64\7\n\2\2\63\65\5\f\7\2\64\63\3\2"+
+		"\2\2\65\66\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\67\13\3\2\2\28;\5\16\b"+
+		"\29;\5\20\t\2:8\3\2\2\2:9\3\2\2\2:;\3\2\2\2;<\3\2\2\2<=\5\22\n\2=\r\3"+
+		"\2\2\2>?\7\f\2\2?@\7\r\2\2@\17\3\2\2\2AB\7\17\2\2BC\7\r\2\2C\21\3\2\2"+
+		"\2DH\7\23\2\2EF\7\5\2\2FG\7\22\2\2GI\7\4\2\2HE\3\2\2\2HI\3\2\2\2I\23\3"+
+		"\2\2\2JK\7\21\2\2K\25\3\2\2\2\t\31!+\60\66:H";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

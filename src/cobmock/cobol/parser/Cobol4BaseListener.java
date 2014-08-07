@@ -77,6 +77,18 @@ public class Cobol4BaseListener implements Cobol4Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMockIdentifier(@NotNull Cobol4Parser.MockIdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMockIdentifier(@NotNull Cobol4Parser.MockIdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCompilationUnit(@NotNull Cobol4Parser.CompilationUnitContext ctx) { }
 	/**
 	 * {@inheritDoc}

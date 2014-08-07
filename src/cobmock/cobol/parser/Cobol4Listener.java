@@ -59,6 +59,16 @@ public interface Cobol4Listener extends ParseTreeListener {
 	 */
 	void exitDataIdentifier(@NotNull Cobol4Parser.DataIdentifierContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link Cobol4Parser#mockIdentifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterMockIdentifier(@NotNull Cobol4Parser.MockIdentifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Cobol4Parser#mockIdentifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitMockIdentifier(@NotNull Cobol4Parser.MockIdentifierContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link Cobol4Parser#compilationUnit}.
 	 * @param ctx the parse tree
 	 */
