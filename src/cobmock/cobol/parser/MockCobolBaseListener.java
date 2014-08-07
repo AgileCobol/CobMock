@@ -29,6 +29,18 @@ public class MockCobolBaseListener implements MockCobolListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDataQualifier(@NotNull MockCobolParser.DataQualifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDataQualifier(@NotNull MockCobolParser.DataQualifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMockMeta(@NotNull MockCobolParser.MockMetaContext ctx) { }
 	/**
 	 * {@inheritDoc}

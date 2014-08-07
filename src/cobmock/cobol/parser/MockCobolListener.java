@@ -19,6 +19,16 @@ public interface MockCobolListener extends ParseTreeListener {
 	 */
 	void exitAddressOfClause(@NotNull MockCobolParser.AddressOfClauseContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MockCobolParser#dataQualifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterDataQualifier(@NotNull MockCobolParser.DataQualifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MockCobolParser#dataQualifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitDataQualifier(@NotNull MockCobolParser.DataQualifierContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MockCobolParser#mockMeta}.
 	 * @param ctx the parse tree
 	 */
