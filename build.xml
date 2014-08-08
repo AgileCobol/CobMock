@@ -3,7 +3,13 @@
 	
 	<target name="grammar">
 		<echo>Generate Cobol Parser</echo>
-		<antlr-gen grammar="grammar/antlr/MockCobol.g" />
+		<antlr-gen grammar="grammar/antlr/Cobol/MockCobol.g"
+		           package="cobmock.cobol.parser"
+				   destdir="src/cobmock/cobol/parser"/>
+		<echo>Generate Configuration Parser</echo>
+		<antlr-gen grammar="grammar/antlr/Config/Config.g"
+				   package="cobmock.config.parser"
+				   destdir="src/cobmock/config/parser"/>
 	</target>
 	
 	<target name="bootstrap-build">
@@ -50,13 +56,15 @@
 	
 	<macrodef name="antlr-gen">
 		<attribute name="grammar"/>
+		<attribute name="package"/>
+		<attribute name="destdir"/>
 		<sequential>
 			<java classname="org.antlr.v4.Tool" fork="true">
 				<classpath>
 					<pathelement location="lib/antlr-4.4-complete.jar" />
 				</classpath>
-				<arg line="-o src/cobmock/cobol/parser"/>
-				<arg line="-package cobmock.cobol.parser" />
+				<arg line="-o @{destdir}"/>
+				<arg line="-package @{package}" />
 				<arg value="@{grammar}"/>
 			</java>
 		</sequential>

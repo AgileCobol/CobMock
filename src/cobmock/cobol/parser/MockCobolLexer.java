@@ -1,4 +1,4 @@
-// Generated from grammar/antlr/MockCobol.g by ANTLR 4.4
+// Generated from grammar/antlr/Cobol/MockCobol.g by ANTLR 4.4
 package cobmock.cobol.parser;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
