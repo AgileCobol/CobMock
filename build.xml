@@ -9,7 +9,6 @@
 		<echo>Generate Configuration Parser</echo>
 		<antlr-gen grammar="grammar/antlr/Config/Config.g"
 				   package="cobmock.config.parser"
-				   visitor="-visitor"
 				   destdir="src/cobmock/config/parser"/>
 	</target>
 	
@@ -62,14 +61,13 @@
 		<attribute name="grammar" />
 		<attribute name="package"/>
 		<attribute name="destdir"/>
-		<attribute name="visitor" default=""/>
 		<sequential>
 			<java classname="org.antlr.v4.Tool" fork="true">
 				<classpath>
 					<pathelement location="lib/antlr-4.4-complete.jar" />
 				</classpath>
 				<arg line="-o @{destdir}"/>
-				<arg line="@{visitor}"/>
+				<arg line="-visitor"/>
 				<arg line="-package @{package}" />
 				<arg value="@{grammar}"/>
 			</java>

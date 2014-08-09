@@ -80,6 +80,11 @@ public class MockCobolParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitCompilationUnit(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitCompilationUnit(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final CompilationUnitContext compilationUnit() throws RecognitionException {
@@ -155,6 +160,11 @@ public class MockCobolParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitMockMeta(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitMockMeta(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MockMetaContext mockMeta() throws RecognitionException {
@@ -193,6 +203,11 @@ public class MockCobolParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitMockIdentifier(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitMockIdentifier(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -244,6 +259,11 @@ public class MockCobolParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitCallStatement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitCallStatement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -301,6 +321,11 @@ public class MockCobolParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitUsingClause(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitUsingClause(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -360,6 +385,11 @@ public class MockCobolParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitDataIdentifier(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitDataIdentifier(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final DataIdentifierContext dataIdentifier() throws RecognitionException {
@@ -416,6 +446,11 @@ public class MockCobolParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitDataName(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitDataName(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -475,6 +510,11 @@ public class MockCobolParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitDataQualifier(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitDataQualifier(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final DataQualifierContext dataQualifier() throws RecognitionException {
@@ -512,6 +552,11 @@ public class MockCobolParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitAddressOfClause(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitAddressOfClause(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -551,6 +596,11 @@ public class MockCobolParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitLengthOfClause(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitLengthOfClause(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final LengthOfClauseContext lengthOfClause() throws RecognitionException {
@@ -587,6 +637,11 @@ public class MockCobolParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MockCobolListener ) ((MockCobolListener)listener).exitCobolToken(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MockCobolVisitor ) return ((MockCobolVisitor<? extends T>)visitor).visitCobolToken(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
