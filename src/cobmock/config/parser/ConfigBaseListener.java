@@ -17,6 +17,18 @@ public class ConfigBaseListener implements ConfigListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMockCall(@NotNull ConfigParser.MockCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMockCall(@NotNull ConfigParser.MockCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAssignment(@NotNull ConfigParser.AssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -48,6 +60,18 @@ public class ConfigBaseListener implements ConfigListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTarget(@NotNull ConfigParser.TargetContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCallId(@NotNull ConfigParser.CallIdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCallId(@NotNull ConfigParser.CallIdContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

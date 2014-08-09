@@ -9,6 +9,16 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface ConfigListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link ConfigParser#mockCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterMockCall(@NotNull ConfigParser.MockCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ConfigParser#mockCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitMockCall(@NotNull ConfigParser.MockCallContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ConfigParser#assignment}.
 	 * @param ctx the parse tree
 	 */
@@ -38,6 +48,16 @@ public interface ConfigListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTarget(@NotNull ConfigParser.TargetContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ConfigParser#callId}.
+	 * @param ctx the parse tree
+	 */
+	void enterCallId(@NotNull ConfigParser.CallIdContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ConfigParser#callId}.
+	 * @param ctx the parse tree
+	 */
+	void exitCallId(@NotNull ConfigParser.CallIdContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ConfigParser#configRoot}.
 	 * @param ctx the parse tree

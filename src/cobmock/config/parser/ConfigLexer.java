@@ -74,7 +74,7 @@ public class ConfigLexer extends Lexer {
 		"\2\2\2\66\64\3\2\2\2\679\7$\2\28(\3\2\2\28\60\3\2\2\29\20\3\2\2\2:<\7"+
 		"\17\2\2;:\3\2\2\2;<\3\2\2\2<=\3\2\2\2=>\7\f\2\2>?\3\2\2\2?@\b\t\2\2@\22"+
 		"\3\2\2\2AC\t\4\2\2BA\3\2\2\2CD\3\2\2\2DB\3\2\2\2DE\3\2\2\2EF\3\2\2\2F"+
-		"G\b\n\2\2G\24\3\2\2\2\n\2!&,\648;D\3\2\3\2";
+		"G\b\n\2\2G\24\3\2\2\2\n\2!&,\648;D\3\b\2\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

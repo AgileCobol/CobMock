@@ -9,6 +9,7 @@
 		<echo>Generate Configuration Parser</echo>
 		<antlr-gen grammar="grammar/antlr/Config/Config.g"
 				   package="cobmock.config.parser"
+				   visitor="-visitor"
 				   destdir="src/cobmock/config/parser"/>
 	</target>
 	
@@ -49,21 +50,26 @@
 				<test name="cobmock.cobol.test.MockStatementPreprocessorTest" />
 				<test name="cobmock.cobol.test.PreprocessorPipelineTest" />
 				<test name="cobmock.cobol.test.MockIdTest" />
+				<test name="cobmock.config.test.ParseConfigTest" />
+				<test name="cobmock.config.test.MultipleMockCallsTest" />
+				<test name="cobmock.config.test.CobmockConfigVisitorTest" />
 			</junit>
 		</target>
 
 	
 	
 	<macrodef name="antlr-gen">
-		<attribute name="grammar"/>
+		<attribute name="grammar" />
 		<attribute name="package"/>
 		<attribute name="destdir"/>
+		<attribute name="visitor" default=""/>
 		<sequential>
 			<java classname="org.antlr.v4.Tool" fork="true">
 				<classpath>
 					<pathelement location="lib/antlr-4.4-complete.jar" />
 				</classpath>
 				<arg line="-o @{destdir}"/>
+				<arg line="@{visitor}"/>
 				<arg line="-package @{package}" />
 				<arg value="@{grammar}"/>
 			</java>
