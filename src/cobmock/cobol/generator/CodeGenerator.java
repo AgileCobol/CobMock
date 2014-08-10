@@ -31,6 +31,9 @@ public class CodeGenerator {
 		
 		replaceMockCallsWithCode();
 		
+		return getResult();
+	}
+	private String getResult() {
 		return rewriter.getText();
 	}
 	private void replaceMockCallsWithCode() {
@@ -38,22 +41,30 @@ public class CodeGenerator {
 			generateMockCodeAndReplaceOriginalCallInTokenStream(statement);
 		}
 	}
-	private void generateMockCodeAndReplaceOriginalCallInTokenStream(
-			MockStatement statement) {
+	private void generateMockCodeAndReplaceOriginalCallInTokenStream(MockStatement statement) {
 		String code = generateCodeForMockStatement(statement);
 		
-		code = addNewlines(code);
+		code = addNewline(code);
 		
-		rewriter.replace(statement.getStartToken(), statement.getStopToken(), code);
+		rewriter.replace(statement.getStartToken().getTokenIndex(), 
+						 getStopTokenIndex(statement), 
+						 code);
 	}
-	private String addNewlines(String code) {
-		code = System.getProperty("line.separator") + code + System.getProperty("line.separator");
+	private int getStopTokenIndex(MockStatement statement) {
+		//the previous cobolToken (-1) and whitespaces (-2) should be preserved.
+		return statement.getStopToken().getTokenIndex()-2;
+	}
+	private String addNewline(String code) {
+		code = System.getProperty("line.separator") + code;
 		return code;
 	}
 	private String generateCodeForMockStatement(MockStatement statement) {		
 		String callId = statement.getCallId();
 		List<Assignment> assignmentList = assignmentTable.get(callId);
 		
+		return generateCodeTemplate(callId, assignmentList);
+	}
+	private String generateCodeTemplate(String callId, List<Assignment> assignmentList) {
 		ST template = new ST(outputTemplate);
 		template.add("callId", callId);		
 		template.add("assignmentList", assignmentList);

@@ -13,7 +13,6 @@ import org.stringtemplate.v4.ST;
 
 import cobmock.cobol.parser.CobmockParser;
 import cobmock.config.Assignment;
-import cobmock.config.CobolAssignment;
 import cobmock.helper.FileReaderHelper;
 
 public class StringTemplateTest {
@@ -53,11 +52,11 @@ public class StringTemplateTest {
 		parser.parse();
 		TokenStreamRewriter rewriter = parser.getTokenStreamRewriter();
 		
-		CobolAssignment assign1 = new CobolAssignment();
+		Assignment assign1 = new Assignment();
 		assign1.setSource("KKD-NR-KKT in KKDW001 in KSBU502 in KSBU503 in TEMP-KONTODATEN in TESTSTRUKTUR");
 		assign1.setTarget("KKDW135");
 		
-		CobolAssignment assign2 = new CobolAssignment();
+		Assignment assign2 = new Assignment();
 		assign2.setSource("ZERO");
 		assign2.setTarget("KKT-SLD in MEINKONTO-STRUKTUR1 in TESTVALUES in TEMP-KONTODATEN in KSBU501");
 

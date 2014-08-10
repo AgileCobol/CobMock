@@ -4,8 +4,8 @@
 <assignmentList: {assignment |
       *
        move 
- <assignment.target>
+ <assignment.source>
          to 
- <assignment.source>     
+ <assignment.target>     
    }>
       *---------------------------------------------------------------*
