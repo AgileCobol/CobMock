@@ -44,15 +44,14 @@ public class CobmockConfigVisitorTest {
 	
 	@Test
 	public void checkAssignments() {
-		List<Assignment> assigns = result.get("ksbu501-call");
+		List<Assignment> assigns = result.get("ksbu501-call");		
+		assertEquals(new String("ksy-up-rc in ste-para").trim(), assigns.get(0).getTarget().trim());
+		assertEquals("ksbc501", assigns.get(1).getTarget().trim());
+		assertEquals("string", assigns.get(2).getTarget().trim());
 		
-		assertEquals("ksy-up-rc in ste-para", assigns.get(0).getTarget());
-		assertEquals("ksbc501", assigns.get(1).getTarget());
-		assertEquals("string", assigns.get(2).getTarget());
-		
-		assertEquals("0", assigns.get(0).getSource());
-		assertEquals("\"TESTA\"", assigns.get(1).getSource());
-		assertEquals("\"A und B\"", assigns.get(2).getSource());
+		assertEquals("0", assigns.get(0).getSource().trim());
+		assertEquals("\"TESTA\"", assigns.get(1).getSource().trim());
+		assertEquals(new String("\"A und B\"").trim(), assigns.get(2).getSource().trim());
 	}
 	
 }

@@ -17,16 +17,21 @@ import cobmock.config.parser.ConfigParser.ConfigRootContext;
 
 public class CobmockConfigParser {
 	private ConfigRootContext ctx;
-	public CobmockConfigParser(InputStream input) throws IOException {
-		ANTLRInputStream antlrInputStream = new ANTLRInputStream(input);
-		ConfigLexer lexer = new ConfigLexer(antlrInputStream);
-		CommonTokenStream tokens = new CommonTokenStream(lexer);	
-		ConfigParser parser = new ConfigParser(tokens);	
-		ctx = parser.configRoot();
+	public CobmockConfigParser(String input) {
+		createParser(new ANTLRInputStream(input));
 	}
 	public Hashtable<String, List<Assignment>> parse() {
 		CobmockConfigVisitor visitor = new CobmockConfigVisitor();
 		return visitor.visit(ctx);
 	}
+	
+	private void createParser(ANTLRInputStream antlrInputStream) {
+		ConfigLexer lexer = new ConfigLexer(antlrInputStream);
+		CommonTokenStream tokens = new CommonTokenStream(lexer);	
+		ConfigParser parser = new ConfigParser(tokens);	
+		ctx = parser.configRoot();
+	}
+
+
 
 }

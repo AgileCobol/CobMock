@@ -3,8 +3,6 @@ package cobmock.cobol.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.antlr.v4.runtime.misc.NotNull;
-
 import cobmock.cobol.MockStatement;
 import cobmock.cobol.parser.MockCobolParser.CallStatementContext;
 import cobmock.cobol.parser.MockCobolParser.CompilationUnitContext;
@@ -25,6 +23,7 @@ public class CobmockVisitor extends MockCobolBaseVisitor<List<MockStatement>> {
 	@Override
 	public List<MockStatement> visitMockMeta(MockMetaContext ctx) {
 		statement = new MockStatement();
+		statement.setStartToken(ctx.start);
 		visitChildren(ctx);
 		result.add(statement);
 		return result;
@@ -41,7 +40,7 @@ public class CobmockVisitor extends MockCobolBaseVisitor<List<MockStatement>> {
 
 	@Override
 	public List<MockStatement> visitCallStatement(CallStatementContext ctx) {
-		statement.setStartToken(ctx.start);
+		
 		statement.setStopToken(ctx.stop);
 
 		return result;

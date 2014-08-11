@@ -46,34 +46,5 @@ public class StringTemplateTest {
 		System.out.println(template.render());
 	}
 	
-	@Test
-	public void cobolTest() throws FileNotFoundException, IOException {
-		CobmockParser parser = new CobmockParser(new FileInputStream("test/files/cobol/mockIdTest.cbl"));
-		parser.parse();
-		TokenStreamRewriter rewriter = parser.getTokenStreamRewriter();
-		
-		Assignment assign1 = new Assignment();
-		assign1.setSource("KKD-NR-KKT in KKDW001 in KSBU502 in KSBU503 in TEMP-KONTODATEN in TESTSTRUKTUR");
-		assign1.setTarget("KKDW135");
-		
-		Assignment assign2 = new Assignment();
-		assign2.setSource("ZERO");
-		assign2.setTarget("KKT-SLD in MEINKONTO-STRUKTUR1 in TESTVALUES in TEMP-KONTODATEN in KSBU501");
-
-		ArrayList<Assignment> assignList= new ArrayList<Assignment>();
-
-		assignList.add(assign1);
-		assignList.add(assign2);
-
-		ST template = new ST(input, '<', '>');
-		template.add("assignmentList", assignList);
-		template.add("callId", "ksbu501-call");
-		
-		String text = System.getProperty("line.separator") + template.render() + System.getProperty("line.separator");
-		
-		rewriter.replace(2, text);
-		
-		System.out.println(rewriter.getText());
-	}
-
+	
 }

@@ -15,7 +15,8 @@ public class CommentPreprocessor implements CobolPreprocessor {
 		return result.toString();
 	}
 	private boolean isCodeLine(String line) {
-		if (line.charAt(6) == '*') {
+		
+		if (line.length() > 6 && line.charAt(6) == '*') {
 			return false;
 		}
 		return true;

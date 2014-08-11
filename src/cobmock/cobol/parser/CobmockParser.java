@@ -9,24 +9,28 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenStreamRewriter;
 
 import cobmock.cobol.MockStatement;
+import cobmock.cobol.TokenStreamRewriterHandler;
 
 public class CobmockParser {
 	private MockCobolParser parser;
 	private TokenStreamRewriter rewriter;
 	
-	public CobmockParser(InputStream input) throws IOException {
-		ANTLRInputStream antlrInputStream = new ANTLRInputStream(input);
+	public CobmockParser(String input) throws IOException {
+		generateParser(new ANTLRInputStream(input));		
+	}
+
+	private void generateParser(ANTLRInputStream antlrInputStream) {
 		MockCobolLexer lexer = new MockCobolLexer(antlrInputStream);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);	
 		rewriter = new TokenStreamRewriter(tokens);
-		parser = new MockCobolParser(tokens);		
+		parser = new MockCobolParser(tokens);
 	}
 	
 	public List<MockStatement> parse() {
 		CobmockVisitor visitor = new CobmockVisitor();
 		return visitor.visit(parser.compilationUnit());
 	}
-	public TokenStreamRewriter getTokenStreamRewriter() {
-		return rewriter;
+	public TokenStreamRewriterHandler getTokenStreamRewriterHandler() {
+		return new TokenStreamRewriterHandler(rewriter);
 	}
 }

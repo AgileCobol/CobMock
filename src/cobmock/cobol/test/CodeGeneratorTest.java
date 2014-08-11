@@ -19,8 +19,8 @@ public class CodeGeneratorTest {
 	
 	@Before
 	public void init() throws FileNotFoundException, IOException {
-		CobmockParser cobolParser = new CobmockParser(new FileInputStream("test/files/cobol/codeGen1.cbl"));
-		CobmockConfigParser configParser = new CobmockConfigParser(new FileInputStream("test/files/config/test1.cfg"));
+		CobmockParser cobolParser = new CobmockParser(FileReaderHelper.fromStream(new FileInputStream("test/files/cobol/codeGen1.cbl")));
+		CobmockConfigParser configParser = new CobmockConfigParser(FileReaderHelper.fromStream(new FileInputStream("test/files/config/test1.cfg")));
 		String outputTemplate = FileReaderHelper.fromStream(new FileInputStream("test/files/stringtemplate/move.st"));
 		
 		generator = new CodeGenerator();
