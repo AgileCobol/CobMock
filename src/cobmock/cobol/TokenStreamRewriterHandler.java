@@ -11,9 +11,9 @@ public class TokenStreamRewriterHandler {
 		return rewriter.getText();
 	}
 	public void replaceMockStatementWithCode(MockStatement statement, String code) {
-		rewriter.replace(statement.getStartToken().getTokenIndex(), 
-				 getStopTokenIndex(statement), 
-				 code);
+		int startIndex = statement.getStartToken().getTokenIndex();
+		int stopIndex = getStopTokenIndex(statement);
+		rewriter.replace(startIndex, stopIndex, code);
 	}
 
 	private int getStopTokenIndex(MockStatement statement) {

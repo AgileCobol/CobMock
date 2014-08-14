@@ -4,7 +4,14 @@ package cobmock.cobol;
 import org.antlr.v4.runtime.Token;
 
 public class MockStatement {
-	private String callId;
+	private String callId, callStatement;
+	
+	private Token startToken, stopToken;
+	
+	public MockStatement() {
+		
+	}
+
 	public String getCallId() {
 		return callId;
 	}
@@ -28,11 +35,13 @@ public class MockStatement {
 	public void setStopToken(Token stopToken) {
 		this.stopToken = stopToken;
 	}
-
-	private Token startToken, stopToken;
-	
-	public MockStatement() {
-		
+	public String getCallStatement() {
+		return callStatement;
 	}
+
+	public void setCallStatement(String callStatement) {
+		this.callStatement = callStatement;
+	}
+
 
 }

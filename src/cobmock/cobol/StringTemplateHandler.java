@@ -11,9 +11,10 @@ public class StringTemplateHandler {
 	public StringTemplateHandler(String template) {
 		this.template = new ST(template);
 	}
-	public String renderAssignments(String callId, List<Assignment> assignmentList) {
+	public String renderAssignments(String callId, List<Assignment> assignmentList, MockStatement statement) {
 		template.add("callId", callId);		
 		template.add("assignmentList", assignmentList);
+		template.add("callStatement", statement.getCallStatement());
 		return template.render();
 	}
 

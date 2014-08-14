@@ -5,6 +5,8 @@
       * commentar!
       
       * @up-call id="ksbu501-call"
-        call KSYUPNAM using KSBC501
+                 call KSYUPNAM using KSBC501
+                                     KKTW001
+                                     KSY-UP-RC
         Exit
         .

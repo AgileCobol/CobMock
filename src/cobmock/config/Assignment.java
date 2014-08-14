@@ -32,7 +32,7 @@ public class Assignment {
 		String[] lines = statement.split("\\r?\\n");
 		StringBuffer result = new StringBuffer();
 		for (String line : lines) {
-			result.append(addSpacesBefore(fitToCobolLine(line)));
+			result.append(fitToCobolLine(line));
 		}
 		return result.toString();
 	}
@@ -49,13 +49,9 @@ public class Assignment {
 			if (preSplitIndex.length() > cobolLineLength) {
 				preSplitIndex = fitToCobolLine(preSplitIndex);
 			}
-			return preSplitIndex + System.getProperty("line.separator") + addSpacesBefore(postSplitIndex);
+			return preSplitIndex + System.getProperty("line.separator") + postSplitIndex;
 		}
 		return line;
-	}
-	
-	private String addSpacesBefore(String line) {
-		return cobolLinePrefix + line;
 	}
 	
 	@Override

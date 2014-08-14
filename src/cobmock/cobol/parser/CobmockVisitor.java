@@ -3,6 +3,9 @@ package cobmock.cobol.parser;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.misc.Interval;
+
 import cobmock.cobol.MockStatement;
 import cobmock.cobol.parser.MockCobolParser.CallStatementContext;
 import cobmock.cobol.parser.MockCobolParser.CompilationUnitContext;
@@ -40,7 +43,7 @@ public class CobmockVisitor extends MockCobolBaseVisitor<List<MockStatement>> {
 
 	@Override
 	public List<MockStatement> visitCallStatement(CallStatementContext ctx) {
-		
+		statement.setCallStatement(getTargetTextWithSpaces(ctx));
 		statement.setStopToken(ctx.stop);
 
 		return result;
@@ -49,6 +52,13 @@ public class CobmockVisitor extends MockCobolBaseVisitor<List<MockStatement>> {
 	private String stripQuotes(String callIdString) {
 		String callId = callIdString.substring(1, callIdString.length()-1);
 		return callId;
+	}
+	private String getTargetTextWithSpaces(ParserRuleContext ctx) {
+		int start = ctx.start.getStartIndex();
+		//stop-Token is not part of the CallStatement and should therefore be removed
+		int stop = ctx.stop.getStopIndex()-ctx.stop.getText().length();
+		Interval interval = new Interval(start, stop);		
+		return ctx.start.getInputStream().getText(interval);
 	}
 
 }

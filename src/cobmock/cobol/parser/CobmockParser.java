@@ -33,4 +33,8 @@ public class CobmockParser {
 	public TokenStreamRewriterHandler getTokenStreamRewriterHandler() {
 		return new TokenStreamRewriterHandler(rewriter);
 	}
+	public String getCallStatementText(MockStatement statement) {
+		System.out.println(parser.getTokenStream().getText(statement.getStartToken(), statement.getStopToken()));
+		return null;
+	}
 }

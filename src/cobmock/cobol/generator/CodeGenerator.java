@@ -51,12 +51,15 @@ public class CodeGenerator {
 
 	private String generateCodeForMockStatement(MockStatement statement) {		
 		String callId = statement.getCallId();
-		List<Assignment> assignmentList = assignmentTable.get(callId);
-
-		return generateCodeTemplate(callId, assignmentList);
+		if (assignmentTable.containsKey(callId)) {
+			List<Assignment> assignmentList = assignmentTable.get(callId);
+			return generateCodeTemplate(callId, assignmentList, statement);
+		}
+		return null;
+		
 	}
-	private String generateCodeTemplate(String callId, List<Assignment> assignmentList) {
-		String result = outputTemplate.renderAssignments(callId, assignmentList);
+	private String generateCodeTemplate(String callId, List<Assignment> assignmentList, MockStatement statement) {
+		String result = outputTemplate.renderAssignments(callId, assignmentList, statement);
 		return addNewline(result);
 	}
 	private void parseConfigFile() {
